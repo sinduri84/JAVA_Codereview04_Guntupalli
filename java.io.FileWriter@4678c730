@@ -1,0 +1,14 @@
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+4        Captain                          Name1   Shoe3      198.56                           1                                198.56                           
+
+4        Captain                          Name1   Electronic2 1258.60                          1                                1258.60                          
+Total Cost = 1457.158
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+4        Captain                          Name1   Shoe3      198.56                           1                                198.56                           
+
+4        Captain                          Name1   Electronic2 1258.60                          1                                1258.60                          
+Total Cost = 1457.158

@@ -1,0 +1,14 @@
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+3        Captain                          Name1   Watch2     154.26                           13                               2005.38                          
+
+3        Captain                          Name1   Cat Bed    298.56                           6                                1791.36                          
+Total Cost = 3796.74
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+3        Captain                          Name1   Watch2     154.26                           13                               2005.38                          
+
+3        Captain                          Name1   Cat Bed    298.56                           6                                1791.36                          
+Total Cost = 3796.74

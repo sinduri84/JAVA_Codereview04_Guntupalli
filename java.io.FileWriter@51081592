@@ -1,0 +1,14 @@
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+1        Black                            Name1   Shoe1      98.56                            12                               1182.72                          
+
+1        Black                            Name1   Electronic1 258.60                           14                               3620.37                          
+Total Cost = 4803.092000000001
+
+OrderID  UserName                         Shop    Product    Price                            Quantity                         Cost                             
+
+1        Black                            Name1   Shoe1      98.56                            12                               1182.72                          
+
+1        Black                            Name1   Electronic1 258.60                           14                               3620.37                          
+Total Cost = 4803.092000000001
