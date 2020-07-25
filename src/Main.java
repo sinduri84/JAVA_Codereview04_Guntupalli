@@ -8,21 +8,32 @@ public class Main {
 
     public static void main(String[] args) throws OutOfStockException, StockLimit15Exception {
 
-        Product product1 = new Product("Shoe1", "You wear them to protect your feet", 98.56, Product.ProductCategory.Apparel, 15);
-        Product product2 = new Product("Electronic1", "Work or Play Time!", 258.598, Product.ProductCategory.Electronics, 14);
-        Product product3 = new Product("Watch1", "Hand Prettifier!", 54.26, Product.ProductCategory.Watches, 16);
-        Product product4 = new Product("Shoe2", "You wear them to protect your feet", 98.56, Product.ProductCategory.Apparel, 13);
-        Product product5 = new Product("Cleanser", "Clean your face or Hands!", 98.56, Product.ProductCategory.Miscellaneous, 6);
-        Product product6 = new Product("Shoe3", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 15);
-        Product product7 = new Product("Electronic2", "Work or Play Time!", 1258.598, Product.ProductCategory.Electronics, 13);
-        Product product8 = new Product("Watch2", "Hand Prettifier!", 154.26, Product.ProductCategory.Watches, 12);
-        Product product9 = new Product("Shoe4", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 19);
-        Product product10 = new Product("Cat Bed", "Treat your cats right!", 298.56, Product.ProductCategory.Miscellaneous, 4);
-
-
         Shop shop1 = new Shop("Name1", "Address1", Product.products);
 
         System.out.println(shop1.toString());
+
+        Product.addProduct("Shoe1", "You wear them to protect your feet!", 95.28, Product.ProductCategory.Apparel, 14, shop1);
+
+        Product.addProduct("Electronic1", "Work or Play Time!", 258.598, Product.ProductCategory.Electronics, 14, shop1);
+
+        Product.addProduct("Watch1", "Hand Prettifier!", 54.26, Product.ProductCategory.Watches, 16, shop1);
+
+        Product.addProduct("Shoe2", "You wear them to protect your feet", 98.56, Product.ProductCategory.Apparel, 13, shop1);
+
+        Product.addProduct("Cleanser", "Clean your face or Hands!", 98.56, Product.ProductCategory.Miscellaneous, 6, shop1);
+
+        Product.addProduct("Shoe3", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 15, shop1);
+
+        Product.addProduct("Electronic2", "Work or Play Time!", 1258.598, Product.ProductCategory.Electronics, 13, shop1);
+
+        Product.addProduct("Watch2", "Hand Prettifier!", 154.26, Product.ProductCategory.Watches, 12, shop1);
+
+        Product.addProduct("Shoe4", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 19, shop1);
+
+        Product.addProduct("Cat Bed", "Treat your cats right!", 298.56, Product.ProductCategory.Miscellaneous, 4, shop1);
+
+
+
 
         User user1 = new User("Black", "Widow", "bwidow@gmail.com", "Karlsplatz", 85281, "6641826474");
         User user2 = new User("Bruce", "Banner", "hulk@gmail.com", "Orange St", 25401, "6641826475");
@@ -32,8 +43,10 @@ public class Main {
         System.out.println("\nOriginal Product Stock");
         Product.printProducts();
 
+
         //Order1
         System.out.println("\nOrder1");
+        //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser1 = new HashMap<>();
         productsUser1.put(1, 12);
         productsUser1.put(2, 14);
@@ -44,6 +57,7 @@ public class Main {
 
         //Order2
         System.out.println("\nOrder2");
+        //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser2 = new HashMap<>();
         productsUser2.put(3, 12);
         productsUser2.put(4, 7);
@@ -54,6 +68,7 @@ public class Main {
 
         //Order3
         System.out.println("\nOrder3");
+        //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser3 = new HashMap<>();
         productsUser3.put(7, 13);
         productsUser3.put(8, 6);
@@ -64,6 +79,7 @@ public class Main {
 
         //Order4
         System.out.println("\nOrder4");
+        //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser4 = new HashMap<>();
         productsUser4.put(5, 1);
         productsUser4.put(6, 1);
@@ -72,8 +88,33 @@ public class Main {
         System.out.println("\nProduct Stock after order");
         Product.printProducts();
 
+        //Order5
+        System.out.println("\nOrder5");
+        //Hashmap takes Product ID and ProductQuantity
+        HashMap<Integer, Integer> productsUser5 = new HashMap<>();
+        productsUser5.put(5, 1);
+        productsUser5.put(6, 1);
+        Order order5 = new Order(User.users.get(4), Shop.shops.get(123), productsUser5);
+
+        System.out.println("\nProduct Stock after order");
+        Product.printProducts();
+
+        //Order6
+        System.out.println("\nOrder6");
+        //Hashmap takes Product ID and ProductQuantity
+        HashMap<Integer, Integer> productsUser6 = new HashMap<>();
+        productsUser6.put(5, 1);
+        productsUser6.put(6, 1);
+        Order order6 = new Order(User.users.get(4), Shop.shops.get(123), productsUser6);
+
+        System.out.println("\nProduct Stock after order");
+        Product.printProducts();
+
         Scanner inputText = new Scanner(System.in);
         Scanner inputNumber = new Scanner(System.in);
+        Scanner inputDouble = new Scanner(System.in);
+
+        System.out.println(order1.toString());
 
         try {
 
@@ -89,7 +130,8 @@ public class Main {
                         "\nPress 3 to see all products with stock less than 5" +
                         "\nPress 4 to see all products out of stock" +
                         "\nPress 5 to add a new product" +
-                        "\nPress 6 to exit" +
+                        "\nPress 6 to see all orders" +
+                        "\nPress 7 to exit" +
                         "\nOption: ");
                 int inputOption1 = inputNumber.nextInt();
 
@@ -115,10 +157,7 @@ public class Main {
                                         entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
                                         entryProduct.getValue().getProductCategory());
                             }
-
                         }
-
-
                         break;
                     case (3):
                         System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Quantity", "Category");
@@ -131,7 +170,6 @@ public class Main {
                                         entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
                                         entryProduct.getValue().getProductCategory());
                             }
-
                         }
                         break;
                     case (4):
@@ -149,8 +187,33 @@ public class Main {
                         }
                         break;
                     case (5):
+                        System.out.print("\nEnter the name of the product: ");
+                        String inputProductName = inputText.nextLine();
+                        System.out.print("\nEnter the description of the product: ");
+                        String inputProductDescription = inputText.nextLine();
+                        System.out.print("\nEnter the price of the product: ");
+                        double inputProductPrice = inputDouble.nextDouble();
+
+                        int counter2 = 0;
+                        for (Product.ProductCategory category : Product.ProductCategory.values()) {
+                            counter2++;
+                            System.out.println("Press " + counter2 + " to choose the category, " + category);
+                        }
+                        int inputOption3 = inputNumber.nextInt();
+
+                        String inputProductCategory = String.valueOf(Array.get(Product.ProductCategory.values(), (inputOption3-1)));
+
+                        System.out.print("\nEnter the quantity of the product: ");
+                        int inputProductQuantity = inputNumber.nextInt();
+
+                        Product.addProduct(inputProductName, inputProductDescription, inputProductPrice, (Product.ProductCategory) Array.get(Product.ProductCategory.values(), (inputOption3-1)), inputProductQuantity, shop1);
+
+                        Product.printProducts();
                         break;
-                    case (6):
+                    case(6):
+                        Order.printAllOrders();
+                        break;
+                    case (7):
                         whileboolean1 = false;
                         break;
                     default:
@@ -163,5 +226,14 @@ public class Main {
             System.out.println("Please press the right formatted input!");
         }
 
+        inputNumber.close();
+        inputText.close();
+
+
+
     }
+
+
+
+
 }

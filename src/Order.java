@@ -7,8 +7,6 @@ public class Order {
     private int orderID;
     private User user;
     private Shop shop;
-/*    //Product added of each product;
-    private HashMap<Integer, Product> productInOrder = new HashMap<>();*/
 
     //Product id and Quantity added of each product;
     private HashMap<Integer, Integer> productQuantityInOrder = new HashMap<>();
@@ -57,8 +55,9 @@ public class Order {
 
 
         }
+        orders.put(this.orderID, this);
 
-        printUserReport(user, orderID, shop, productQuantityInOrder);
+        printUserReport(user, this.orderID, shop, productQuantityInOrder);
 
 
     }
@@ -93,16 +92,6 @@ public class Order {
 
     public void setProductQuantityInOrder(HashMap<Integer, Integer> productQuantityInOrder) {
         this.productQuantityInOrder = productQuantityInOrder;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderID=" + orderID +
-                ", user=" + user +
-                ", shop=" + shop +
-                ", productQuantityInOrder=" + productQuantityInOrder +
-                '}';
     }
 
     public static void printUserReport(User user, int orderID, Shop shop, HashMap<Integer, Integer> productQuantityInOrder) {
@@ -168,10 +157,8 @@ public class Order {
             printWrite.println(" ");
 
             printWrite.printf("%-16s %-32s %-90s %-16s %-16s %n", "ProductID", "Name", "Description", "Price", "Quantity");
-            double totalCost = 0;
 
-            printWrite.printf("%-16d %-32s %-90s %-16.2f %-16d %n",
-                    Product.products.get(productID).getProductID(),
+            printWrite.printf("%-16d %-32s %-90s %-16.2f %-16d %n", Product.products.get(productID).getProductID(),
                     Product.products.get(productID).getProductName(),
                     Product.products.get(productID).getProductDescription(),
                     Product.products.get(productID).getProductPrice(),
@@ -185,5 +172,36 @@ public class Order {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public static void printAllOrders() {
+        for (Map.Entry<Integer, Order> entryOrder : orders.entrySet()) {
+            System.out.println("OrderNumber: " + entryOrder.getKey());
+            System.out.println("User Name: " + entryOrder.getValue().getUser().getUserFirstName());
+            System.out.println("Shop Name: " + entryOrder.getValue().getShop().getShopName());
+            System.out.printf("%-16s %-32s %-16s %-16s %-16s %n", "ProductID", "Name", "Price", "Quantity", "Cost");
+            double totalCost = 0;
+            for (Map.Entry<Integer, Integer> entryOrderProduct : entryOrder.getValue().getProductQuantityInOrder().entrySet()) {
+                System.out.printf("%-16d %-32s %-16.2f %-16d %-16.2f %n",
+                        Product.products.get(entryOrderProduct.getKey()).getProductID(),
+                        Product.products.get(entryOrderProduct.getKey()).getProductName(),
+                        Product.products.get(entryOrderProduct.getKey()).getProductPrice(),
+                        entryOrderProduct.getValue(),
+                        (entryOrderProduct.getValue() * Product.products.get(entryOrderProduct.getKey()).getProductPrice()));
+                totalCost += (entryOrderProduct.getValue() *Product.products.get(entryOrderProduct.getKey()).getProductPrice());
+
+            }
+            System.out.println("Total Cost of this order is " + totalCost + "\n");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID=" + orderID +
+                ", user=" + user +
+                ", shop=" + shop +
+                ", productQuantityInOrder=" + productQuantityInOrder +
+                '}';
     }
 }

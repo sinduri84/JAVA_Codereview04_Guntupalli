@@ -38,3 +38,83 @@ OrderID          UserName             Shop                 Product              
 4                Captain              Name1                Shoe3                            198.56           1                198.56           
 4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
 Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                Captain              Name1                Watch2                           154.26           13               2005.38          
+3                Captain              Name1                Cat Bed                          298.56           6                1791.36          
+Total Cost = 3796.74
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                Captain              Name1                Shoe3                            198.56           1                198.56           
+4                Captain              Name1                Electronic2                      1258.60          1                1258.60          
+Total Cost = 1457.158

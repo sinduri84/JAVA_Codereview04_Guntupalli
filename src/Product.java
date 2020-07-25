@@ -30,11 +30,9 @@ public class Product {
                 this.productPrice = productPrice;
                 this.productCategory = productCategory;
                 this.productQuantity =  productQuantity;
-                products.put(this.productID, this);
+                products.put(this.getProductID(), this);
                 System.out.println("New product created!");
-                if(productQuantity < 5) {
-                    Order.reportLowStock(this.productID);
-                }
+
             }
 
         } catch (StockLimit15Exception e) {
@@ -101,5 +99,14 @@ public class Product {
                     entryProduct.getValue().getProductDescription(), entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
                     entryProduct.getValue().getProductCategory());
         }
+    }
+
+    public static void addProduct(String productName, String productDescription, double productPrice, Product.ProductCategory productCategory, int productQuantity, Shop shop) throws StockLimit15Exception {
+        Product product =  new Product(productName, productDescription, productPrice, productCategory, productQuantity);
+        shop.setShopProductHash(Product.products);
+        if(productQuantity < 5) {
+            Order.reportLowStock(product.getProductID());
+        }
+
     }
 }
