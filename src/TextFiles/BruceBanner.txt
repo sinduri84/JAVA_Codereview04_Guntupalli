@@ -1,60 +1,6 @@
+
  
 OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
- 
-OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                Bruce                Name1                Shoe2                            98.56            12               1182.72          
-2                Bruce                Name1                Cleanser                         98.56            6                591.36           
+2                BruceBanner          Name1                Shoe2                            98.56            12               1182.72          
+2                BruceBanner          Name1                Cleanser                         98.56            6                591.36           
 Total Cost = 1774.08

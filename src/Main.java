@@ -6,6 +6,23 @@ import java.util.Scanner;
 
 public class Main {
 
+    /*(10) Design a simple menu - In Main Class;
+    (5) Create a class Product: A product can only have a max. stock of 15 items. - Created StockLimit15Exception to make sure the quantity of product never crosses 15; This exception is used in the constructor of the Product Class;
+    (5) Create  a method to add products to the shop - Created in Product Class;
+    (5) Create a class Shop - Created and all the products in the products Hashmap is automatically added to the shop as a variable Hashmap;
+    (5) Create a class User - Created;
+    (25) A user should be able to buy products from the shop - Order Class created to track the orders by each user; Order class takes user, shop and a hashmap containing product id and the respective quantity; Test Data shown below. The products hashmap is printed to show the decrease in quantity after each order; This functionality is in the Order Constructor;
+    (20) Display the purchase process, with a few examples, in your main() to prove everything works accordingly - 6 orders created and shown in console;
+    (10) if the stock of a product gets below 5 it should inform the staff about that. - When a product is added or order is created, if the final quantity of order is less than 5, the message is sent to a "LowStock" text file. The method reportLowStock is created in Order Class to achieve this.
+If one of the staff members tries to add a product to the shop but the stock is already full it should throw a custom exception - StockLimitReachedException. - Created a custom exception and it is used in the Product class
+    (15) Extend your menu to show all users registered to the shop in a nicely formatted way. - Achieved in Option 7 and by creating a method printAllUsers in User Class.
+    How are the Shop and User class connected? - They are connected by the Order Class;
+    (20) Create a method printReport(), which creates an external file “report.txt” - Created a method printUserReport to create a user specific file, which dynamically updates a user order data as soon as the order is placed.
+
+
+    *
+    * */
+
     public static void main(String[] args) throws OutOfStockException, StockLimit15Exception {
 
         Shop shop1 = new Shop("Name1", "Address1", Product.products);
@@ -110,6 +127,7 @@ public class Main {
         System.out.println("\nProduct Stock after order");
         Product.printProducts();
 
+        //Menu Design starts here;
         Scanner inputText = new Scanner(System.in);
         Scanner inputNumber = new Scanner(System.in);
         Scanner inputDouble = new Scanner(System.in);
@@ -131,7 +149,8 @@ public class Main {
                         "\nPress 4 to see all products out of stock" +
                         "\nPress 5 to add a new product" +
                         "\nPress 6 to see all orders" +
-                        "\nPress 7 to exit" +
+                        "\nPress 7 to see all users registered" +
+                        "\nPress 8 to exit" +
                         "\nOption: ");
                 int inputOption1 = inputNumber.nextInt();
 
@@ -214,6 +233,9 @@ public class Main {
                         Order.printAllOrders();
                         break;
                     case (7):
+                        User.printAllUsers();
+                        break;
+                    case (8):
                         whileboolean1 = false;
                         break;
                     default:

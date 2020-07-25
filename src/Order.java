@@ -117,7 +117,9 @@ public class Order {
             double totalCost = 0;
 
             for (Map.Entry<Integer, Integer> entryProduct : productQuantityInOrder.entrySet()) {
-                printWrite.printf("%-16d %-20s %-20s %-32s %-16.2f %-16d %-16.2f %n", orderID, user.getUserFirstName(), shop.getShopName(),
+                printWrite.printf("%-16d %-20s %-20s %-32s %-16.2f %-16d %-16.2f %n", orderID,
+                        user.getUserFirstName() + user.getUserLastName(),
+                        shop.getShopName(),
                         Product.products.get(entryProduct.getKey()).getProductName(),
                         Product.products.get(entryProduct.getKey()).getProductPrice(),
                         entryProduct.getValue(),
@@ -177,7 +179,7 @@ public class Order {
     public static void printAllOrders() {
         for (Map.Entry<Integer, Order> entryOrder : orders.entrySet()) {
             System.out.println("OrderNumber: " + entryOrder.getKey());
-            System.out.println("User Name: " + entryOrder.getValue().getUser().getUserFirstName());
+            System.out.println("User Name: " + entryOrder.getValue().getUser().getUserFirstName() + " " + entryOrder.getValue().getUser().getUserLastName());
             System.out.println("Shop Name: " + entryOrder.getValue().getShop().getShopName());
             System.out.printf("%-16s %-32s %-16s %-16s %-16s %n", "ProductID", "Name", "Price", "Quantity", "Cost");
             double totalCost = 0;

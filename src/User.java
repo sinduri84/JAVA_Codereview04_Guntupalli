@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private int userID;
@@ -79,5 +80,15 @@ public class User {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+
+    public static void printAllUsers() {
+        System.out.printf("%-12s %-20s %-20s %-20s %-32s %-12s %-20s %n", "UserID", "First Name", "Last Name", "Email", "Address", "Zip", "Phone");
+        for (Map.Entry<Integer, User> entryUser : users.entrySet()) {
+            System.out.printf("%-12d %-20s %-20s %-20s %-32s %-12d %-20s %n", entryUser.getKey(), entryUser.getValue().getUserFirstName(),
+                    entryUser.getValue().getUserLastName(), entryUser.getValue().getUserEmail(),
+                    entryUser.getValue().getUserAddress(), entryUser.getValue().getUserZip(), entryUser.getValue().getUserPhone());
+
+        }
     }
 }
