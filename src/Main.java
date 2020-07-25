@@ -183,11 +183,12 @@ If one of the staff members tries to add a product to the shop but the stock is 
                         }
                         int inputOption2 = inputNumber.nextInt();
 
-                        System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Category");
+                        System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %n", "ProductID", "Name", "Description", "Price", "Category");
                         for (Map.Entry<Integer, Product> entryProduct : Product.products.entrySet()) {
 
                             if (entryProduct.getValue().getProductCategory().equals(Array.get(Product.ProductCategory.values(), (inputOption2 - 1)))) {
-                                System.out.printf("%-10s %-20s %-50s %-16.2f %-16d %-32s %n", entryProduct.getKey(),
+                                System.out.printf("%-10s %-20s %-50s %-16.2f %-16s %n",
+                                        entryProduct.getKey(),
                                         entryProduct.getValue().getProductName(),
                                         entryProduct.getValue().getProductDescription(),
                                         entryProduct.getValue().getProductPrice(),
