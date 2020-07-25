@@ -15,6 +15,7 @@ public class Order {
 
     public Order(User user, Shop shop, HashMap<Integer, Integer> productQuantityInOrder) throws OutOfStockException {
 
+
         staticID++;
         setOrderID(staticID);
         this.user = user;
@@ -23,26 +24,28 @@ public class Order {
         //Decreases the quantity of each Product in the products hashmap.
         for (Map.Entry<Integer, Integer> entryProduct : productQuantityInOrder.entrySet()) {
             try {
-                if (Product.products.containsKey(entryProduct.getKey())) {
+                if (shop.getShopProductHash().containsKey(entryProduct.getKey())) {
                     //Throws exception if the order quantity value is higher than the product quantity available and does not add this to the final order
-                    if (Product.products.get(entryProduct.getKey()).getProductQuantity() - entryProduct.getValue() < 0) {
-                        this.productQuantityInOrder.put(entryProduct.getKey(), Product.products.get(entryProduct.getKey()).getProductQuantity());
-                        Product.products.get(entryProduct.getKey()).setProductQuantity(0);
+                    if ((shop.getShopProductHash().get(entryProduct.getKey()) - entryProduct.getValue()) < 0) {
+                        productQuantityInOrder.replace(entryProduct.getKey(), shop.getShopProductHash().get(entryProduct.getKey()));
+                        shop.getShopProductHash().replace(entryProduct.getKey(), 0);
 
-                        if (Product.products.get(entryProduct.getKey()).getProductQuantity() <= 5) {
-                            //Records message in a file if product is going below stock;
-                            reportLowStock(Product.products.get(entryProduct.getKey()).getProductID());
-                        }
-
-                        throw new OutOfStockException("Sorry, We only have " + Product.products.get(entryProduct.getKey()).getProductQuantity() + " in our warehouse. Your order has been adjusted based on the available stock.");
-
-                    } else {
-                        Product.products.get(entryProduct.getKey()).setProductQuantity(Product.products.get(entryProduct.getKey()).getProductQuantity() - entryProduct.getValue());
                         this.productQuantityInOrder = productQuantityInOrder;
 
-                        if (Product.products.get(entryProduct.getKey()).getProductQuantity() <= 5) {
+                        if (shop.getShopProductHash().get(entryProduct.getKey()) <= 5) {
                             //Records message in a file if product is going below stock;
-                            reportLowStock(Product.products.get(entryProduct.getKey()).getProductID());
+                            reportLowStock(Product.products.get(entryProduct.getKey()).getProductID(), shop);
+                        }
+
+                        throw new OutOfStockException("Sorry, We only have " + shop.getShopProductHash().get(entryProduct.getKey()) + " in our warehouse. Your order has been adjusted based on the available stock.");
+
+                    } else {
+                        shop.getShopProductHash().replace(entryProduct.getKey(), shop.getShopProductHash().get(entryProduct.getKey()) - entryProduct.getValue());
+                        this.productQuantityInOrder = productQuantityInOrder;
+
+                        if (shop.getShopProductHash().get(entryProduct.getKey()) <= 5) {
+                            //Records message in a file if product is going below stock;
+                            reportLowStock(Product.products.get(entryProduct.getKey()).getProductID(), shop);
                         }
                     }
 
@@ -139,7 +142,7 @@ public class Order {
 
     }
 
-    public static void reportLowStock(int productID) {
+    public static void reportLowStock(int productID, Shop shop) {
         try {
             File file = new File("./src/TextFiles/LowStock.txt"); // Create file
             if (file.createNewFile()) { // Use createNewFile() method
@@ -160,11 +163,12 @@ public class Order {
 
             printWrite.printf("%-16s %-32s %-90s %-16s %-16s %n", "ProductID", "Name", "Description", "Price", "Quantity");
 
-            printWrite.printf("%-16d %-32s %-90s %-16.2f %-16d %n", Product.products.get(productID).getProductID(),
+            printWrite.printf("%-16d %-32s %-90s %-16.2f %-16d %n",
+                    Product.products.get(productID).getProductID(),
                     Product.products.get(productID).getProductName(),
                     Product.products.get(productID).getProductDescription(),
                     Product.products.get(productID).getProductPrice(),
-                    Product.products.get(productID).getProductQuantity()
+                    shop.getShopProductHash().get(productID)
             );
 
             printWrite.close();
@@ -190,7 +194,7 @@ public class Order {
                         Product.products.get(entryOrderProduct.getKey()).getProductPrice(),
                         entryOrderProduct.getValue(),
                         (entryOrderProduct.getValue() * Product.products.get(entryOrderProduct.getKey()).getProductPrice()));
-                totalCost += (entryOrderProduct.getValue() *Product.products.get(entryOrderProduct.getKey()).getProductPrice());
+                totalCost += (entryOrderProduct.getValue() * Product.products.get(entryOrderProduct.getKey()).getProductPrice());
 
             }
             System.out.println("Total Cost of this order is " + totalCost + "\n");

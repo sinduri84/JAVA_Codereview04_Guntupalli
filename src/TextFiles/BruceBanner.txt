@@ -1,6 +1,5 @@
-
  
 OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
-2                BruceBanner          Name1                Shoe2                            98.56            12               1182.72          
-2                BruceBanner          Name1                Cleanser                         98.56            6                591.36           
-Total Cost = 1774.08
+2                BruceBanner          Name1                Watch1                           54.26            5                271.30           
+2                BruceBanner          Name1                Shoe2                            98.56            4                394.24           
+Total Cost = 665.54

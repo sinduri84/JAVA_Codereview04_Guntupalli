@@ -1,21 +1,40 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class Shop {
     private int shopID = 123;
     private String shopName;
     private String shopAddress;
 
-    //Holds Product Id and the respective Product in this shop
-    private HashMap<Integer, Product> shopProductHash = new HashMap<>();
+    //Holds Product Id and the respective Product Quantity in this shop
+    private HashMap<Integer, Integer> shopProductHash = new HashMap<>();
 
     public static HashMap<Integer, Shop> shops = new HashMap<>();
 
-    public Shop(String shopName, String shopAddress, HashMap<Integer, Product> shopProductHash) {
+    public Shop(String shopName, String shopAddress, HashMap<Integer, Integer> shopProductHash) throws StockLimit15Exception {
 
-        this.shopName = shopName;
-        this.shopAddress = shopAddress;
-        this.shopProductHash = shopProductHash;
-        shops.put(this.shopID, this);
+        HashMap<Integer, Integer> newShopProductHash = new HashMap<>();
+        for(Map.Entry<Integer, Integer> entryProduct : shopProductHash.entrySet()) {
+            try{
+                if(entryProduct.getValue() > 15) {
+                    throw new StockLimit15Exception(Product.products.get(entryProduct.getKey()).getProductName() + " product can only take 15 spaces.");
+                } else {
+                    newShopProductHash.put(entryProduct.getKey(), entryProduct.getValue());
+                }
+
+            } catch (StockLimit15Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        if(newShopProductHash.size() != 0) {
+            this.shopName = shopName;
+            this.shopAddress = shopAddress;
+            this.shopProductHash = newShopProductHash;
+            shops.put(this.shopID, this);
+        }
+
+
 
 
     }
@@ -44,11 +63,11 @@ public class Shop {
         this.shopAddress = shopAddress;
     }
 
-    public HashMap<Integer, Product> getShopProductHash() {
+    public HashMap<Integer, Integer> getShopProductHash() {
         return shopProductHash;
     }
 
-    public void setShopProductHash(HashMap<Integer, Product> shopProductHash) {
+    public void setShopProductHash(HashMap<Integer, Integer> shopProductHash) {
         this.shopProductHash = shopProductHash;
     }
 
@@ -60,6 +79,28 @@ public class Shop {
                 ", shopAddress='" + shopAddress + '\'' +
                 ", shopProductHash=" + shopProductHash +
                 '}';
+    }
+
+
+
+    public static void addProduct(String productName, String productDescription, double productPrice, Product.ProductCategory productCategory, int productQuantity, Shop shop) throws StockLimit15Exception {
+        try  {
+            if(productQuantity > 15) {
+                throw new StockLimit15Exception("Product can't have more than 15 items");
+            } else  {
+                Product product =  new Product(productName, productDescription, productPrice, productCategory);
+
+                shop.getShopProductHash().put(product.getProductID(), productQuantity);
+                if(productQuantity < 5) {
+                    Order.reportLowStock(product.getProductID(), shop);
+                }
+            }
+        } catch(StockLimit15Exception e) {
+            System.out.println(e);
+        }
+
+
+
     }
 
 

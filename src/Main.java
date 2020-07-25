@@ -8,10 +8,13 @@ public class Main {
 
     /*(10) Design a simple menu - In Main Class;
     (5) Create a class Product: A product can only have a max. stock of 15 items. - Created StockLimit15Exception to make sure the quantity of product never crosses 15; This exception is used in the constructor of the Product Class;
-    (5) Create  a method to add products to the shop - Created in Product Class;
-    (5) Create a class Shop - Created and all the products in the products Hashmap is automatically added to the shop as a variable Hashmap;
+    (5) Create  a method to add products to the shop - Created in Order Class;
+    (5) Create a class Shop - Created and all the products in the products Hashmap is added to the shop as a variable Hashmap;
     (5) Create a class User - Created;
-    (25) A user should be able to buy products from the shop - Order Class created to track the orders by each user; Order class takes user, shop and a hashmap containing product id and the respective quantity; Test Data shown below. The products hashmap is printed to show the decrease in quantity after each order; This functionality is in the Order Constructor;
+    (25) A user should be able to buy products from the shop - Order Class created to track the orders by each user;
+    Order class takes user, shop and a hashmap containing product id and the respective quantity;
+    Test Data shown below. The products hashmap is printed to show the decrease in quantity after each order;
+    This functionality is in the Order Constructor;
     (20) Display the purchase process, with a few examples, in your main() to prove everything works accordingly - 6 orders created and shown in console;
     (10) if the stock of a product gets below 5 it should inform the staff about that. - When a product is added or order is created, if the final quantity of order is less than 5, the message is sent to a "LowStock" text file. The method reportLowStock is created in Order Class to achieve this.
 If one of the staff members tries to add a product to the shop but the stock is already full it should throw a custom exception - StockLimitReachedException. - Created a custom exception and it is used in the Product class
@@ -25,31 +28,47 @@ If one of the staff members tries to add a product to the shop but the stock is 
 
     public static void main(String[] args) throws OutOfStockException, StockLimit15Exception {
 
-        Shop shop1 = new Shop("Name1", "Address1", Product.products);
+        Product product1 = new Product("Shoe1", "You wear them to protect your feet!", 95.28, Product.ProductCategory.Apparel);
 
-        System.out.println(shop1.toString());
+        Product product2 = new Product("Electronic1", "Work or Play Time!", 258.598, Product.ProductCategory.Electronics);
 
-        Product.addProduct("Shoe1", "You wear them to protect your feet!", 95.28, Product.ProductCategory.Apparel, 14, shop1);
+        Product product3 = new Product("Watch1", "Hand Prettifier!", 54.26, Product.ProductCategory.Watches);
 
-        Product.addProduct("Electronic1", "Work or Play Time!", 258.598, Product.ProductCategory.Electronics, 14, shop1);
+        Product product4 = new Product("Shoe2", "You wear them to protect your feet", 98.56, Product.ProductCategory.Apparel);
 
-        Product.addProduct("Watch1", "Hand Prettifier!", 54.26, Product.ProductCategory.Watches, 16, shop1);
+        Product product5 = new Product("Cleanser", "Clean your face or Hands!", 98.56, Product.ProductCategory.Miscellaneous);
 
-        Product.addProduct("Shoe2", "You wear them to protect your feet", 98.56, Product.ProductCategory.Apparel, 13, shop1);
+        Product product6 = new Product("Shoe3", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel);
 
-        Product.addProduct("Cleanser", "Clean your face or Hands!", 98.56, Product.ProductCategory.Miscellaneous, 6, shop1);
+        Product product7 = new Product("Electronic2", "Work or Play Time!", 1258.598, Product.ProductCategory.Electronics);
 
-        Product.addProduct("Shoe3", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 15, shop1);
+        Product product8 = new Product("Watch2", "Hand Prettifier!", 154.26, Product.ProductCategory.Watches);
 
-        Product.addProduct("Electronic2", "Work or Play Time!", 1258.598, Product.ProductCategory.Electronics, 13, shop1);
+        Product product9 = new Product("Shoe4", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel);
 
-        Product.addProduct("Watch2", "Hand Prettifier!", 154.26, Product.ProductCategory.Watches, 12, shop1);
+        Product product10 = new Product("Cat Bed", "Treat your cats right!", 298.56, Product.ProductCategory.Miscellaneous);
 
-        Product.addProduct("Shoe4", "You wear them to protect your feet", 198.56, Product.ProductCategory.Apparel, 19, shop1);
+        Product product11 = new Product("Cat Tree", "Treat your cats right!", 698.56, Product.ProductCategory.Miscellaneous);
 
-        Product.addProduct("Cat Bed", "Treat your cats right!", 298.56, Product.ProductCategory.Miscellaneous, 4, shop1);
+        Product product12 = new Product("Chocolate", "Eat Chocolate!", 12.56, Product.ProductCategory.Miscellaneous);
+
+        HashMap<Integer, Integer> produtHashInShop = new HashMap<>();
+
+        produtHashInShop.put(1, 14);
+        produtHashInShop.put(2, 12);
+        produtHashInShop.put(3, 10);
+        produtHashInShop.put(4, 4);
+        produtHashInShop.put(5, 12);
+        produtHashInShop.put(6, 16);
+        produtHashInShop.put(7, 13);
+        produtHashInShop.put(8, 14);
+        produtHashInShop.put(9, 20);
+        produtHashInShop.put(10, 14);
+        produtHashInShop.put(11, 6);
+        produtHashInShop.put(12, 10);
 
 
+        Shop shop1 = new Shop("Name1", "Address1", produtHashInShop);
 
 
         User user1 = new User("Black", "Widow", "bwidow@gmail.com", "Karlsplatz", 85281, "6641826474");
@@ -58,7 +77,7 @@ If one of the staff members tries to add a product to the shop but the stock is 
         User user4 = new User("Thor", "Odinson", "thor@gmail.com", "Asgard", 220010, "6641826477");
 
         System.out.println("\nOriginal Product Stock");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
 
         //Order1
@@ -66,22 +85,22 @@ If one of the staff members tries to add a product to the shop but the stock is 
         //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser1 = new HashMap<>();
         productsUser1.put(1, 12);
-        productsUser1.put(2, 14);
+        productsUser1.put(2, 10);
         Order order1 = new Order(User.users.get(1), Shop.shops.get(123), productsUser1);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Order2
         System.out.println("\nOrder2");
         //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser2 = new HashMap<>();
-        productsUser2.put(3, 12);
+        productsUser2.put(3, 5);
         productsUser2.put(4, 7);
         Order order2 = new Order(User.users.get(2), Shop.shops.get(123), productsUser2);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Order3
         System.out.println("\nOrder3");
@@ -92,18 +111,18 @@ If one of the staff members tries to add a product to the shop but the stock is 
         Order order3 = new Order(User.users.get(3), Shop.shops.get(123), productsUser3);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Order4
         System.out.println("\nOrder4");
         //Hashmap takes Product ID and ProductQuantity
         HashMap<Integer, Integer> productsUser4 = new HashMap<>();
         productsUser4.put(5, 1);
-        productsUser4.put(6, 1);
+        productsUser4.put(2, 1);
         Order order4 = new Order(User.users.get(3), Shop.shops.get(123), productsUser4);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Order5
         System.out.println("\nOrder5");
@@ -114,7 +133,7 @@ If one of the staff members tries to add a product to the shop but the stock is 
         Order order5 = new Order(User.users.get(4), Shop.shops.get(123), productsUser5);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Order6
         System.out.println("\nOrder6");
@@ -125,14 +144,12 @@ If one of the staff members tries to add a product to the shop but the stock is 
         Order order6 = new Order(User.users.get(4), Shop.shops.get(123), productsUser6);
 
         System.out.println("\nProduct Stock after order");
-        Product.printProducts();
+        Product.printProducts(shop1);
 
         //Menu Design starts here;
         Scanner inputText = new Scanner(System.in);
         Scanner inputNumber = new Scanner(System.in);
         Scanner inputDouble = new Scanner(System.in);
-
-        System.out.println(order1.toString());
 
         try {
 
@@ -156,7 +173,7 @@ If one of the staff members tries to add a product to the shop but the stock is 
 
                 switch ((inputOption1)) {
                     case (1):
-                        Product.printProducts();
+                        Product.printProducts(shop1);
                         break;
                     case (2):
                         int counter1 = 0;
@@ -166,43 +183,44 @@ If one of the staff members tries to add a product to the shop but the stock is 
                         }
                         int inputOption2 = inputNumber.nextInt();
 
-                        System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Quantity", "Category");
+                        System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Category");
                         for (Map.Entry<Integer, Product> entryProduct : Product.products.entrySet()) {
 
                             if (entryProduct.getValue().getProductCategory().equals(Array.get(Product.ProductCategory.values(), (inputOption2 - 1)))) {
                                 System.out.printf("%-10s %-20s %-50s %-16.2f %-16d %-32s %n", entryProduct.getKey(),
                                         entryProduct.getValue().getProductName(),
                                         entryProduct.getValue().getProductDescription(),
-                                        entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
+                                        entryProduct.getValue().getProductPrice(),
                                         entryProduct.getValue().getProductCategory());
                             }
                         }
                         break;
                     case (3):
                         System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Quantity", "Category");
-                        for (Map.Entry<Integer, Product> entryProduct : Product.products.entrySet()) {
+                        for (Map.Entry<Integer, Integer> entryProduct : shop1.getShopProductHash().entrySet()) {
 
-                            if (entryProduct.getValue().getProductQuantity() < 5) {
+                            if (entryProduct.getValue() < 5) {
                                 System.out.printf("%-10s %-20s %-50s %-16.2f %-16d %-32s %n", entryProduct.getKey(),
-                                        entryProduct.getValue().getProductName(),
-                                        entryProduct.getValue().getProductDescription(),
-                                        entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
-                                        entryProduct.getValue().getProductCategory());
+                                        Product.products.get(entryProduct.getKey()).getProductName(),
+                                        Product.products.get(entryProduct.getKey()).getProductDescription(),
+                                        Product.products.get(entryProduct.getKey()).getProductPrice(),
+                                        entryProduct.getValue(),
+                                        Product.products.get(entryProduct.getKey()).getProductCategory());
                             }
                         }
                         break;
                     case (4):
                         System.out.printf("%n%-10s %-20s %-50s %-16s %-16s %-32s %n", "ProductID", "Name", "Description", "Price", "Quantity", "Category");
-                        for (Map.Entry<Integer, Product> entryProduct : Product.products.entrySet()) {
+                        for (Map.Entry<Integer, Integer> entryProduct : shop1.getShopProductHash().entrySet()) {
 
-                            if (entryProduct.getValue().getProductQuantity() == 0) {
+                            if (entryProduct.getValue() == 0) {
                                 System.out.printf("%-10s %-20s %-50s %-16.2f %-16d %-32s %n", entryProduct.getKey(),
-                                        entryProduct.getValue().getProductName(),
-                                        entryProduct.getValue().getProductDescription(),
-                                        entryProduct.getValue().getProductPrice(), entryProduct.getValue().getProductQuantity(),
-                                        entryProduct.getValue().getProductCategory());
+                                        Product.products.get(entryProduct.getKey()).getProductName(),
+                                        Product.products.get(entryProduct.getKey()).getProductDescription(),
+                                        Product.products.get(entryProduct.getKey()).getProductPrice(),
+                                        entryProduct.getValue(),
+                                        Product.products.get(entryProduct.getKey()).getProductCategory());
                             }
-
                         }
                         break;
                     case (5):
@@ -225,9 +243,9 @@ If one of the staff members tries to add a product to the shop but the stock is 
                         System.out.print("\nEnter the quantity of the product: ");
                         int inputProductQuantity = inputNumber.nextInt();
 
-                        Product.addProduct(inputProductName, inputProductDescription, inputProductPrice, (Product.ProductCategory) Array.get(Product.ProductCategory.values(), (inputOption3-1)), inputProductQuantity, shop1);
+                        Shop.addProduct(inputProductName, inputProductDescription, inputProductPrice, (Product.ProductCategory) Array.get(Product.ProductCategory.values(), (inputOption3-1)), inputProductQuantity, shop1);
 
-                        Product.printProducts();
+                        Product.printProducts(shop1);
                         break;
                     case(6):
                         Order.printAllOrders();

@@ -1,5 +1,5 @@
  
 OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
 1                BlackWidow           Name1                Shoe1                            95.28            12               1143.36          
-1                BlackWidow           Name1                Electronic1                      258.60           14               3620.37          
-Total Cost = 4763.732
+1                BlackWidow           Name1                Electronic1                      258.60           10               2585.98          
+Total Cost = 3729.34
