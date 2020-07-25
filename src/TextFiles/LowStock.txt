@@ -1,0 +1,18 @@
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+1                Shoe1                            You wear them to protect your feet!                                                        95.28            2                
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+2                Electronic1                      Work or Play Time!                                                                         258.60           2                
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+3                Watch1                           Hand Prettifier!                                                                           54.26            5                
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+4                Shoe2                            You wear them to protect your feet                                                         98.56            0                
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+7                Electronic2                      Work or Play Time!                                                                         1258.60          0                
+ 
+ProductID        Name                             Description                                                                                Price            Quantity         
+2                Electronic1                      Work or Play Time!                                                                         258.60           1                

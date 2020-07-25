@@ -1,0 +1,10 @@
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+3                CaptainAmerica       Name1                Electronic2                      1258.60          13               16361.77         
+3                CaptainAmerica       Name1                Watch2                           154.26           6                925.56           
+Total Cost = 17287.334
+ 
+OrderID          UserName             Shop                 Product                          Price            Quantity         Cost             
+4                CaptainAmerica       Name1                Electronic1                      258.60           1                258.60           
+4                CaptainAmerica       Name1                Cleanser                         98.56            1                98.56            
+Total Cost = 357.158
